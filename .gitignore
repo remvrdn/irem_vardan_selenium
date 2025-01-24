@@ -1,3 +1,4 @@
+### Maven Outputs ###
 target/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
@@ -8,9 +9,14 @@ target/
 .idea/jarRepositories.xml
 .idea/compiler.xml
 .idea/libraries/
+.idea/
 *.iws
 *.iml
 *.ipr
+
+### Files Related to The Work Environment ###
+*.log
+*.class
 
 ### Eclipse ###
 .apt_generated
@@ -31,8 +37,15 @@ build/
 !**/src/main/**/build/
 !**/src/test/**/build/
 
+### Temporary Files ###
+*.tmp
+*.swp
+
 ### VS Code ###
 .vscode/
 
 ### Mac OS ###
 .DS_Store
+
+### Other OS Files ###
+Thumbs.db
