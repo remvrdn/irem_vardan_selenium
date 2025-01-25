@@ -191,7 +191,7 @@ Key dependencies defined in `pom.xml`:
 ```
 ## **Contributors**
 
-- **Irem Vardan**
-    - API Testing Expert
+- **Irem Vardan, Msc**
+    -  Senior Test Automation Engineer
     - [GitHub Profile](https://github.com/remvrdn)
 ---
