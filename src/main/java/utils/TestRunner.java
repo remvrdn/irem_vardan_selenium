@@ -9,9 +9,9 @@ public class TestRunner {
 
     public static void openReport() {
         try {
-            File reportFile = new File("target/allure-report/index.html");  // Raporun bulunduğu dizin
+            File reportFile = new File("target/allure-report/index.html");
             if (Desktop.isDesktopSupported()) {
-                Desktop.getDesktop().browse(reportFile.toURI());  // Tarayıcıyı aç
+                Desktop.getDesktop().browse(reportFile.toURI());
             }
         } catch (IOException e) {
             System.out.println("Error opening the Allure report: " + e.getMessage());
@@ -19,22 +19,22 @@ public class TestRunner {
     }
 
     public static void runTestsWithTestNGXml() {
-        // Maven komutunu tanımlıyoruz
-        String mvnCommand = "mvn clean test allure:report";  // allure:report komutunu kullanıyoruz
 
-        // ProcessBuilder ile komutu çalıştırıyoruz
+        String mvnCommand = "mvn clean test allure:report";
+
+
         ProcessBuilder processBuilder = new ProcessBuilder(mvnCommand.split(" "));
-        processBuilder.inheritIO();  // Terminal çıktılarını görünür yap
+        processBuilder.inheritIO();
 
         try {
-            // Komutu çalıştır
+            // exe cmd
             Process process = processBuilder.start();
-            int exitCode = process.waitFor();  // Sürecin bitmesini bekle
+            int exitCode = process.waitFor();
 
-            // Eğer işlem başarılıysa
+            // if success
             if (exitCode == 0) {
                 System.out.println("Tests ran successfully and Allure reports are generated.");
-                openReport();  // Raporu tarayıcıda aç
+                openReport();
             } else {
                 System.out.println("Error running tests or generating reports.");
             }
@@ -45,7 +45,7 @@ public class TestRunner {
     }
 
     public static void main(String[] args) {
-        // Testleri çalıştır ve raporu oluştur
+        // run test cases
         runTestsWithTestNGXml();
     }
 }

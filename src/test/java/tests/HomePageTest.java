@@ -11,9 +11,14 @@ import pages.HomePage;
 import pages.CommonPage;
 import utils.ConfigReader;
 import utils.DriverManager;
+import io.qameta.allure.Step;
+import io.qameta.allure.Description;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Story;
 
 import static utils.DriverManager.takeScreenshot;
 
+@Feature("Homepage")
 public class HomePageTest {
     WebDriver driver;
     String baseUrl=ConfigReader.getProperty("baseUrl");

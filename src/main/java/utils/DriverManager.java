@@ -13,6 +13,8 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class DriverManager {
     private static WebDriver driver;
@@ -68,8 +70,12 @@ public class DriverManager {
                 return;
             }
         }
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMdd_HHmmss");
+        String timestamp = LocalDateTime.now().format(formatter);
+        String fileName = testName + "_" + timestamp + ".png";
         try {
-            Files.copy(srcFile.toPath(), Paths.get("screenshots/" + testName + ".png"));
+            Files.copy(srcFile.toPath(), screenshotsDir.resolve(fileName));
+            System.out.println("Screenshot saved as: " + fileName);
         } catch (IOException e) {
             e.printStackTrace();
             System.out.println("An error while taking a screenshot");

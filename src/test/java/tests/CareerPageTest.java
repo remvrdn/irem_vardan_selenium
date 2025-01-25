@@ -1,5 +1,6 @@
 package tests;
 
+import io.qameta.allure.Feature;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.ITestContext;
@@ -13,6 +14,7 @@ import utils.DriverManager;
 
 import static utils.DriverManager.takeScreenshot;
 
+@Feature("Career Page")
 public class CareerPageTest {
     WebDriver driver;
     String baseUrl= ConfigReader.getProperty("baseUrl");

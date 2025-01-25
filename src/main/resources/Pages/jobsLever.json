@@ -1,0 +1,3 @@
+{
+  "applyThisJobButton": "//div[@class='postings-btn-wrapper']//a[text()='Apply for this job']"
+}

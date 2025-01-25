@@ -60,14 +60,14 @@ public class QAPage extends CommonPage{
             for (WebElement element : elements) {
                 String text = element.getText();
                 if (text.equalsIgnoreCase("Istanbul, Turkey")) {
-                    System.out.println("Elementin metni Istanbul, Turkey: " + text);
+                    System.out.println("The text of the element is Istanbul, Turkey: " + text);
                     return true;
                 }
             }
-            System.out.println("Hiçbir elementin metni Istanbul, Turkey değil.");
+            System.out.println("The text of none of the elements is Istanbul, Turkey.");
             return false;
         } catch (Exception e) {
-            System.err.println("Metin kontrolü sırasında hata oluştu: " + e.getMessage());
+            System.err.println("Error occurred during text check: " + e.getMessage());
             return false;
         }
     }

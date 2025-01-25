@@ -1,10 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<suite name="Allure Test Suite" parallel="tests" thread-count="2">
-    <test name="Allure Test">
+<suite name="Allure Test Suite" parallel="tests" thread-count="3">
+    <listeners>
+        <!-- Allure Listener -->
+        <listener class-name="io.qameta.allure.testng.AllureTestNg" />
+    </listeners>
+    <test name="Homepage Tests">
         <classes>
-            <!-- Test sınıflarını buraya ekliyorsun -->
             <class name="tests.HomePageTest" />
+        </classes>
+    </test>
+    <test name="Career Page Tests">
+        <classes>
             <class name="tests.CareerPageTest" />
+        </classes>
+    </test>
+    <test name="QA Jobs Tests">
+        <classes>
             <class name="tests.QAJobsTest" />
         </classes>
     </test>

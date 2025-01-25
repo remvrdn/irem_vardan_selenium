@@ -1,5 +1,6 @@
 package tests;
 
+import io.qameta.allure.Feature;
 import org.openqa.selenium.WebDriver;
 import org.testng.ITestContext;
 import org.testng.annotations.AfterMethod;
@@ -13,6 +14,7 @@ import utils.DriverManager;
 
 import static utils.DriverManager.takeScreenshot;
 
+@Feature("QA Jobs")
 public class QAJobsTest {
     WebDriver driver;
     String baseUrl= ConfigReader.getProperty("baseUrl");
@@ -56,8 +58,6 @@ public class QAJobsTest {
 
 
     }
-
-
 
     @Test(testName = "Check QA Jobs")
     public void checkQAJobs(){
@@ -121,6 +121,7 @@ public class QAJobsTest {
         qaPage.isTextQAorQualityAssurance("qualityAssurancePage","departTitleinJobCard");
         commonPage.hoverAndClickButton("qualityAssurancePage","firstQAJobCard","viewRoleButton");
         commonPage.switchToNewTab("jobApplyUrl");
+        commonPage.findElementByXpath("jobsLever","applyThisJobButton");
     }
     @AfterMethod
     public void tearDown(ITestContext context) {

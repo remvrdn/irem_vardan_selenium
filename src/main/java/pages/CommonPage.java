@@ -40,7 +40,7 @@ public class CommonPage {
             throw new RuntimeException("Not visible element " + element, e);
         }
     }
-    // Sayfa yönlendirme ve sayfa url kontrolü
+    // page redirection and page url control
     public void goToUrl(String url) {
         driver.get(url);
     }
@@ -52,72 +52,72 @@ public class CommonPage {
 
         while (scrollAttempts < maxScrollAttempts) {
             try {
-                // Elementi bul ve tıklanabilir olup olmadığını kontrol et
+                // find the element and check if it is clickable
                 WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
                 WebElement element = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(elementPath)));
 
-                // Scroll işlemi
+                // scrolling process
                 JavascriptExecutor js = (JavascriptExecutor) driver;
                 js.executeScript("arguments[0].scrollIntoView({block: 'center', inline: 'nearest'});", element);
-                System.out.println("Element bulundu ve scroll yapıldı: " + elementName);
+                System.out.println("Element found and scrolled: " + elementName);
 
-                // Tıklanabilirlik kontrolü
+                // clickability control
                 wait.until(ExpectedConditions.elementToBeClickable(element));
                 element.click(); // Elemente tıklanıyor
-                System.out.println("Element tıklanabilir durumda ve tıklandı: " + elementName);
-                return; // Metodu tamamla
+                System.out.println("The element is clickable and was clicked: " + elementName);
+                return;
 
             } catch (org.openqa.selenium.StaleElementReferenceException staleException) {
-                System.out.println("Element DOM'da yeniden oluşturuldu, tekrar aranıyor...");
+                System.out.println("Element recreated in DOM, searching again...");
             } catch (Exception e) {
-                // Scroll yap ve deneme sayısını artır
+                // scroll and increase the number of attempts
                 JavascriptExecutor js = (JavascriptExecutor) driver;
                 js.executeScript("window.scrollBy(0, 400);");
                 scrollAttempts++;
-                System.out.println("Scroll yapılıyor... Deneme: " + scrollAttempts);
+                System.out.println("Scrolling... Test: " + scrollAttempts);
             }
         }
 
-        System.err.println("Maksimum scroll denemesine ulaşıldı. Element tıklanabilir hale getirilemedi: " + elementName);
+        System.err.println("Maximum scroll attempts reached. Could not make element clickable: " + elementName);
     }
 
 
     public void scrollAndClickElement(String pageName, String elementName) {
         String elementPath = JsonReader.getLocator(pageName, elementName);
-        int maxScrollAttempts = 10; // Maksimum scroll denemesi
-        int scrollCount = 0; // Scroll sayacı
+        int maxScrollAttempts = 10; // maximum scroll attempts
+        int scrollCount = 0; // scroll counter
         boolean isElementClickable = false;
 
         while (!isElementClickable && scrollCount < maxScrollAttempts) {
             try {
-                // Elementi bul ve her döngüde yeniden tanımla
+                // find the element and redefine it every loop
                 WebElement element = driver.findElement(By.xpath(elementPath));
 
-                // Elementi görünür hale getirmek için scroll yap
+                // scroll to make element visible
                 Actions actions = new Actions(driver);
                 actions.moveToElement(element).perform();
-                System.out.println("Element bulundu ve scroll yapıldı: " + elementName);
+                System.out.println("Element found and scrolled: " + elementName);
 
-                // Tıklanabilir olduğunu doğrula ve tıkla
+                // verify that it is clickable and click
                 if (element.isDisplayed() && element.isEnabled()) {
-                    isElementClickable = true; // Tıklanabilir, döngüyü bitir
+                    isElementClickable = true; // clickable, end loop
                     element.click();
-                    System.out.println("Element tıklanabilir durumda ve tıklandı: " + elementName);
+                    System.out.println("The element is clickable and was clicked: " + elementName);
                 } else {
                     actions.moveToElement(element).perform();
                     element.click();
-                    System.out.println("Element görünür ancak tıklanabilir değil: " + elementName);
+                    System.out.println("The element is visible but not clickable: " + elementName);
                 }
             } catch (Exception e) {
-                // Eğer element bulunamazsa veya tıklanamazsa, sayfayı manuel olarak kaydır
+                // if the element is not found or clickable, scroll the page manually
                 try {
 
                     JavascriptExecutor js = (JavascriptExecutor) driver;
                     js.executeScript("window.scrollBy(0, 250);");
                     scrollCount++;
-                    System.out.println("Scroll yapılıyor... Deneme: " + scrollCount);
+                    System.out.println("Scrolling... Test: " + scrollCount);
                 } catch (Exception jsException) {
-                    System.err.println("Scroll işlemi başarısız: " + jsException.getMessage());
+                    System.err.println("Scrolling operation failed: " + jsException.getMessage());
                     break; // Eğer scroll yapılamıyorsa döngüyü durdur
                 }
             }
@@ -125,7 +125,7 @@ public class CommonPage {
 
         // Maksimum scroll denemesinden sonra element bulunamazsa hata mesajı
         if (!isElementClickable) {
-            System.err.println("Element tıklanabilir hale getirilemedi: " + elementName);
+            System.err.println("Could not make element clickable: " + elementName);
         }
     }
 
@@ -202,41 +202,41 @@ public class CommonPage {
 
         while (!isElementClickable && scrollAttempts < maxScrollAttempts) {
             try {
-                // Elementi bulmaya çalış
+                // try to find the element
                 WebElement element = driver.findElement(By.xpath(elementPath));
 
-                // Elementin görünürlüğünü sağla ve scroll yap
+                // make the element visible and scroll
                 JavascriptExecutor js = (JavascriptExecutor) driver;
                 js.executeScript("arguments[0].scrollIntoView(true);", element);
-                System.out.println("Element bulundu ve scroll yapıldı: " + elementName);
+                System.out.println("Element found and scrolled: " + elementName);
 
-                // Tıklanabilir olduğunu doğrula
+                // verify that it is clickable
                 WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
                 wait.until(ExpectedConditions.elementToBeClickable(element));
 
                 if (element.isDisplayed() && element.isEnabled()) {
                     isElementClickable = true; // Tıklanabilir, döngüyü bitir
                     element.click(); // Tıkla
-                    System.out.println("Element tıklanabilir durumda ve tıklandı: " + elementName);
+                    System.out.println("The element is clickable and was clicked: " + elementName);
                 } else {
-                    System.out.println("Element görünür ancak henüz tıklanabilir değil: " + elementName);
+                    System.out.println("The element is visible but not yet clickable: " + elementName);
                 }
             } catch (Exception e) {
-                // Eğer element bulunamazsa veya tıklanamazsa, sayfayı manuel olarak küçük bir miktar kaydır
+                // if the element is not found or is clicked, manually scroll the page a small amount
                 try {
                     JavascriptExecutor js = (JavascriptExecutor) driver;
                     js.executeScript("window.scrollBy(0, 250);");
                     scrollAttempts++;
-                    System.out.println("Element bulunamadı veya tıklanamadı, aşağı doğru scroll yapılıyor... Deneme: " + scrollAttempts);
+                    System.out.println("Element not found or clickable, scrolling down... Try: " + scrollAttempts);
                 } catch (Exception jsException) {
-                    System.err.println("Scroll işlemi başarısız: " + jsException.getMessage());
+                    System.err.println("Scrolling operation failed: " + jsException.getMessage());
                     break; // Eğer scroll yapılamıyorsa döngüyü durdur
                 }
             }
         }
 
         if (!isElementClickable) {
-            System.err.println("Maksimum scroll denemesine ulaşıldı. Element tıklanabilir hale getirilemedi: " + elementName);
+            System.err.println("Maximum scroll attempts reached. Could not make element clickable: " + elementName);
         }
     }
 
@@ -246,9 +246,9 @@ public class CommonPage {
         try {
             WebElement element = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(elementPath)));
             element.click();
-            System.out.println("Element tıklanabilir durumda ve tıklandı: " + elementName);
+            System.out.println("The element is clickable and was clicked: " + elementName);
         } catch (Exception e) {
-            System.err.println("Elemente tıklanamadı: " + elementName + ". Hata: " + e.getMessage());
+            System.err.println("Element could not be clicked: " + elementName + ". Failed: " + e.getMessage());
         }
     }
     public void waitforTenSeconds(){
@@ -261,9 +261,9 @@ public class CommonPage {
             WebElement element = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(elementPath)));
             Actions actions = new Actions(driver);
             actions.doubleClick(element).perform();
-            System.out.println("Elemente çift tıklandı: " + elementName);
+            System.out.println("Double click on the element: " + elementName);
         } catch (Exception e) {
-            System.err.println("Elemente çift tıklanamadı: " + elementName + ". Hata: " + e.getMessage());
+            System.err.println("Could not double-click element: " + elementName + ". Failed: " + e.getMessage());
         }
     }
     public void hoverAndClickButton(String pageName,String firstElementName, String SecondElementName) {
@@ -271,13 +271,13 @@ public class CommonPage {
         String cardXPath = JsonReader.getLocator(pageName, firstElementName);
         String buttonXPath = JsonReader.getLocator(pageName, SecondElementName);
         try {
-            // Card üzerine gel
+            // hover the card
             WebElement cardElement = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(cardXPath)));
             Actions actions = new Actions(driver);
             actions.moveToElement(cardElement).perform();
             System.out.println("Hovered the card: " + cardXPath);
 
-            // Butonu görünür hale getir ve tıkla
+            // wait until button visible and clickable and click
             WebElement buttonElement = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(buttonXPath)));
             buttonElement.click();
             System.out.println("Click button: " + buttonXPath);
@@ -287,11 +287,11 @@ public class CommonPage {
     }
     public void switchToNewTab(String expectedURL) {
         try {
-            // Geçerli pencereyi sakla
+            // keep valid win
             String currentWindow = driver.getWindowHandle();
             Set<String> allWindows = driver.getWindowHandles();
 
-            // Yeni pencereye geç
+            // access new tab
             for (String window : allWindows) {
                 if (!window.equals(currentWindow)) {
                     driver.switchTo().window(window);
@@ -307,7 +307,7 @@ public class CommonPage {
                 }
             }
         }catch (Exception e){
-            System.err.println("Sekme değiştirme veya URL kontrolü sırasında hata oluştu: " + e.getMessage());
+            System.err.println("An error occurred while switching tabs or checking URLs: " + e.getMessage());
 
         }
         }
