@@ -1,0 +1,14 @@
+{
+  "careersPageTitle": "//h1[text()='Ready to disrupt? ']",
+  "careersPagePath": "careers/",
+  "lifeAtTitle": "//h2[text()='Life at Insider']",
+  "lifeAtTextArea": "//h2[text()='Life at Insider']/parent::div/parent::div/following-sibling::div//p",
+  "ourLocationTitle": "//h3[contains(text(),'Our Locations')]",
+  "ourLocationTextArea": "//h3[contains(text(),'Our Locations')]//following-sibling::p",
+  "ourLocationList": "//h3[contains(text(),'Our Locations')]/parent::div/parent::div//ul",
+  "findYourCallingTitle": "//h3[contains(text(),'Find your calling')]/parent::div/following-sibling::div/following-sibling::a",
+  "seeAllTeamsButton": "//a[text()='See all teams']",
+  "qualityAssuranceSection": "//h3[contains(text(),'Quality Assurance')]",
+  "declineAllButton": "//a[text()='Decline All'] ",
+  "QATeamTitle": "//h3[text()='Quality Assurance']"
+}

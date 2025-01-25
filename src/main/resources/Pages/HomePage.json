@@ -1,4 +1,6 @@
 {
   "homePageHeader": "//h1",
-  "homePageTitle":"//title"
+  "homePageTitle":"//title",
+  "companySectioninDropdownList": "//div[@class='collapse navbar-collapse']//a[contains(text(),'Company')]",
+  "careersinCompanySection": "//div[@class='collapse navbar-collapse']//a[contains(text(),'Careers')]"
 }

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="Allure Test Suite" parallel="tests" thread-count="2">
+    <test name="Allure Test">
+        <classes>
+            <!-- Test sınıflarını buraya ekliyorsun -->
+            <class name="tests.HomePageTest" />
+            <class name="tests.CareerPageTest" />
+            <class name="tests.QAJobsTest" />
+        </classes>
+    </test>
+</suite>

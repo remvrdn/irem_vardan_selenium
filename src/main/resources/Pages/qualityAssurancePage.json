@@ -1,0 +1,16 @@
+{
+  "qualityAssurancePagePath": "quality-assurance/",
+  "qualityAssurancePageTitle": "//h1[contains(text(),'Quality Assurance')]",
+  "seeAllQAJobsButton": "//a[text()='See all QA jobs']",
+  "openAllPositionsTitle": "//h3[text()='All open positions']",
+  "filterbyLocationDropbox": "//label[text()='Filter by Location']/parent::div//span",
+  "filterIstanbulLocation": "//li[text()='Istanbul, Turkey']",
+  "filterQADepartment": "//label[text()='Filter by Department']/parent::div//span[@title='Quality Assurance']",
+  "filterbyDepartmentDropbox": "//label[text()='Filter by Department']/parent::div//span[@class='selection']",
+  "QAOptionfilterbyDepartmentDropbox": "//li[text()='Quality Assurance']",
+  "softwareQATesterPositionTitle": "//p[contains(text(),'Software QA')]",
+  "positonLocationinJobCard": "//div[@class='position-location text-large']",
+  "departTitleinJobCard": "//span[contains(@class,'position-department')]",
+  "firstQAJobCard": "(//span[contains(@class,'position-department')])[1]",
+  "viewRoleButton": "(//a[text()='View Role'])[1]"
+}
