@@ -80,7 +80,7 @@ selenium_task_
 1. **Clone the Repository**
 
    ```bash
-   git clone <repository-url>
+   git clone  https://github.com/remvrdn/irem_vardan_selenium
    cd selenium_task_
    ```
 
