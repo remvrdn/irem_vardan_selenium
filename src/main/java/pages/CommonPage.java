@@ -311,4 +311,28 @@ public class CommonPage {
 
         }
         }
+<<<<<<< HEAD
     }
+=======
+
+    public void scrollAndClickElementwithJS(String pageName, String elementName) {
+        String elementPath = JsonReader.getLocator(pageName, elementName);
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+
+        try {
+            WebElement element = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(elementPath)));
+
+            // scroll into view
+            ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView({behavior: 'smooth', block: 'center'});", element);
+
+            // JS click to avoid overlay issues
+            ((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
+
+            System.out.println("Element clicked via JS: " + elementName);
+        } catch (Exception e) {
+            System.err.println("Failed to scroll and click element: " + elementName + " - " + e.getMessage());
+        }
+    }
+
+}
+>>>>>>> 2ef7341 (update project for website)

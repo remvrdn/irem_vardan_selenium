@@ -19,7 +19,11 @@ public class QAPage extends CommonPage{
         try {
             WebElement element = driver.findElement(By.xpath(elementPath));
             if (element.isDisplayed()) {
+<<<<<<< HEAD
                 System.out.println("Element görünür: " + elementPath);
+=======
+                System.out.println("Found Element: " + elementPath);
+>>>>>>> 2ef7341 (update project for website)
             } else {
                 System.out.println("Not Found Element " + elementPath);
                 String dropboxElementPath= JsonReader.getLocator("qualityAssurancePage","filterbyDepartmentDropbox");

@@ -17,6 +17,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class DriverManager {
+<<<<<<< HEAD
     private static WebDriver driver;
 
     public static WebDriver getDriver(String browserType) {
@@ -54,6 +55,45 @@ public class DriverManager {
         if (driver != null) {
             driver.quit();
             driver = null;
+=======
+    private static ThreadLocal<WebDriver> driver = new ThreadLocal<>();
+
+    public static WebDriver getDriver() {
+        if(driver.get() == null){
+            String browser = ConfigReader.getProperty("browser").toLowerCase();
+            switch(browser){
+                case "chrome" -> driver.set(new ChromeDriver());
+                case "firefox" -> driver.set(new FirefoxDriver());
+                default -> throw new IllegalArgumentException("Invalid browser: "+browser);
+            }
+            driver.get().manage().window().maximize();
+        }
+        return driver.get();
+    }
+
+    // creates a new WebDriver instance each time it is called
+    public static WebDriver createNewDriver() {
+        WebDriver newDriver = initDriver();
+        driver.set(newDriver);
+        return newDriver;
+    }
+    private static WebDriver initDriver() {
+        String browser = ConfigReader.getProperty("browser").toLowerCase();
+        WebDriver webDriver;
+        switch (browser) {
+            case "chrome" -> webDriver = new ChromeDriver();
+            case "firefox" -> webDriver = new FirefoxDriver();
+            default -> throw new IllegalArgumentException("Invalid browser: " + browser);
+        }
+        webDriver.manage().window().maximize();
+        return webDriver;
+    }
+
+    public static void quitDriver() {
+        if(driver.get() != null){
+            driver.get().quit();
+            driver.remove();
+>>>>>>> 2ef7341 (update project for website)
         }
     }
     public static void takeScreenshot(WebDriver driver, String testName) {

@@ -1,0 +1,1 @@
+{"uuid":"553a3943-a674-4c26-ab06-22e41ed34279","name":"tests.CareerPageTest.setup","children":["407d0222-c9c1-4b7a-8c46-5df2060a2690"],"description":"","befores":[{"name":"setup","status":"passed","stage":"finished","description":"","steps":[],"attachments":[],"parameters":[],"start":1756721458640,"stop":1756721466452}],"afters":[],"start":1756721458639,"stop":1756721466452}

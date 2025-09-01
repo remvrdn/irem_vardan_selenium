@@ -4,11 +4,19 @@
   "seeAllQAJobsButton": "//a[text()='See all QA jobs']",
   "openAllPositionsTitle": "//h3[text()='All open positions']",
   "filterbyLocationDropbox": "//label[text()='Filter by Location']/parent::div//span",
+<<<<<<< HEAD
   "filterIstanbulLocation": "//li[text()='Istanbul, Turkey']",
   "filterQADepartment": "//label[text()='Filter by Department']/parent::div//span[@title='Quality Assurance']",
   "filterbyDepartmentDropbox": "//label[text()='Filter by Department']/parent::div//span[@class='selection']",
   "QAOptionfilterbyDepartmentDropbox": "//li[text()='Quality Assurance']",
   "softwareQATesterPositionTitle": "//p[contains(text(),'Software QA')]",
+=======
+  "filterIstanbulLocation": "//li[text()='Istanbul, Turkiye' or text()='Istanbul, Turkey' or text()='Istanbul, Türkiye']",
+  "filterQADepartment": "//label[text()='Filter by Department']/parent::div//span[@title='Quality Assurance']",
+  "filterbyDepartmentDropbox": "//label[text()='Filter by Department']/parent::div//span[@class='selection']",
+  "QAOptionfilterbyDepartmentDropbox": "//li[text()='Quality Assurance']",
+  "softwareQATesterPositionTitle": "//p[contains(text(),'Software QA') or contains(text(),' Software Quality Assurance')]",
+>>>>>>> 2ef7341 (update project for website)
   "positonLocationinJobCard": "//div[@class='position-location text-large']",
   "departTitleinJobCard": "//span[contains(@class,'position-department')]",
   "firstQAJobCard": "(//span[contains(@class,'position-department')])[1]",

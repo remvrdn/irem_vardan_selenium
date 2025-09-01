@@ -9,6 +9,10 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pages.CareersPage;
 import pages.CommonPage;
+<<<<<<< HEAD
+=======
+import pages.HomePage;
+>>>>>>> 2ef7341 (update project for website)
 import utils.ConfigReader;
 import utils.DriverManager;
 
@@ -23,10 +27,19 @@ public class CareerPageTest {
 
     @BeforeMethod
     public void setup() {
+<<<<<<< HEAD
         driver = DriverManager.getDriver(ConfigReader.getProperty("browser"));
         careersPage = new CareersPage(driver);
         commonPage = new CommonPage(driver);
         driver.get(baseUrl);
+=======
+
+        driver = DriverManager.createNewDriver();
+        careersPage = new CareersPage(driver);
+        commonPage = new CommonPage(driver);
+        driver.get(baseUrl);
+        commonPage.clickElement("HomePage", "cookieAcceptAll");
+>>>>>>> 2ef7341 (update project for website)
     }
     @Test(testName = "Check Careers Page Attributes")
     public void testCareersPage() {
@@ -50,7 +63,10 @@ public class CareerPageTest {
         commonPage.clickElement("HomePage","companySectioninDropdownList");
         commonPage.clickElement("HomePage","careersinCompanySection");
         commonPage.getCurrentUrl("CareersPage", "careersPagePath");
+<<<<<<< HEAD
         commonPage.clickElement("CareersPage","declineAllButton");
+=======
+>>>>>>> 2ef7341 (update project for website)
         commonPage.findElementByXpath("CareersPage", "careersPageTitle");
         commonPage.findElementByXpath("CareersPage","ourLocationTitle");
         commonPage.isElementTextPresent("CareersPage","ourLocationTextArea");

@@ -1,0 +1,1 @@
+{"uuid":"a7986516-93b9-4187-9807-9d22a2703902","name":"tests.QAJobsTest.setup","children":["cc109a41-6100-45d7-987b-6f0a93952370"],"description":"","befores":[{"name":"setup","status":"passed","stage":"finished","description":"","steps":[],"attachments":[],"parameters":[],"start":1756723373966,"stop":1756723378989}],"afters":[],"start":1756723373966,"stop":1756723378989}
